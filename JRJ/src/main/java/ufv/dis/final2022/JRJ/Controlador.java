@@ -21,29 +21,22 @@ public class Controlador {
             peopleString = API.getEntitySwapi(solicitudDescarga);
             Gson gson = new Gson();
 
-            if (solicitudDescarga.getPlanets().equals("people")) {
+            if (solicitudDescarga.getEntity().equals("planets")) {
+                Planets planet = gson.fromJson(peopleString, Planets.class);
+                DataHandler.altaEntity(planet);
 
-                People people = gson.fromJson(peopleString, People.class);
-                DataHandler.altaEntity(people);
+                return ResponseEntity.ok(planet);
 
-                return ResponseEntity.ok(people);
-
-            } else {
-
-                Starship starship = gson.fromJson(peopleString, Starship.class);
-                DataHandler.altaEntity(starship);
-
-                return ResponseEntity.ok(starship);
             }
+
         } catch (IOException e) {
-           return ResponseEntity.notFound().build();
+            throw new RuntimeException(e);
         } catch (InterruptedException e) {
-            return ResponseEntity.notFound().build();
+            throw new RuntimeException(e);
         }
-
+        return null;
     }
-
-    @GetMapping(value ={ "/consultar/{num}","/consultar"})
+        @GetMapping(value ={ "/consultar/{num}","/consultar"})
     public ResponseEntity<ArrayList<Entity>> consultar(@PathVariable(required = false) Integer num) {
 
         try {

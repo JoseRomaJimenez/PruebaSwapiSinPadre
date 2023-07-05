@@ -13,7 +13,7 @@ public class API {
 
     public static String getEntitySwapi(SolicitudDescarga solicitudDescarga) throws IOException, InterruptedException {
 
-        String fullUrl = String.format(API_URL, solicitudDescarga.getPlanets());
+        String fullUrl = String.format(API_URL, solicitudDescarga.getEntity());
         fullUrl = fullUrl + "/" + solicitudDescarga.getId();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(fullUrl))

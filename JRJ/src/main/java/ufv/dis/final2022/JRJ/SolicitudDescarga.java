@@ -2,20 +2,20 @@ package ufv.dis.final2022.JRJ;
 
 public class SolicitudDescarga {
 
-    private String planets;
+    private String entity;
     private int id;
 
     public SolicitudDescarga() {
     }
 
-    public SolicitudDescarga(String planet, int id) {
-        this.planets = planet;
+    public SolicitudDescarga(String entity, int id) {
+        this.entity = entity;
         this.id = id;
 
     }
 
-    public String getPlanets() {
-        return planets;
+    public String getEntity() {
+        return entity;
     }
 
     public int getId() {
@@ -25,7 +25,7 @@ public class SolicitudDescarga {
     @Override
     public String toString() {
         return "SolicitudDescarga{" +
-                "planets='" + planets + '\'' +
+                "entity='" + entity + '\'' +
                 ", id=" + id +
                 '}';
     }

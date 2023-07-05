@@ -18,8 +18,7 @@ public class DataHandler {
 
         RuntimeTypeAdapterFactory<Entity> runtimeTypeAdapterFactory = RuntimeTypeAdapterFactory
                 .of(Entity.class, "type")
-                .registerSubtype(People.class, "people")
-                .registerSubtype(Starship.class, "starship");
+                .registerSubtype(Planets.class, "planets");
 
         Gson gson = new GsonBuilder().registerTypeAdapterFactory(runtimeTypeAdapterFactory).create();
         //Si hubiese fechas ponemos lo de abajo y la fecha en este formato (puede estar en otro orden el formato)
@@ -27,7 +26,7 @@ public class DataHandler {
 
         //Leemos el fichero
         try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("./src/main/resources/" + PATH))); // Funcion que lee el fichero
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("JRJ/src/main/resources" + PATH))); // Funcion que lee el fichero
             Type datoListType = new TypeToken<ArrayList<Entity>>(){}.getType();
             entities = gson.fromJson(reader, datoListType); //Convierte el fichero json que tenemos, a arraylist de productos
             reader.close(); //Cerramos el fichero
@@ -45,7 +44,7 @@ public class DataHandler {
         //Si hubiese fechas ponemos lo de abajo y la fecha en este formato (puede estar en otro orden el formato)
         //Gson gson = new GsonBuilder().setDateFormat("yyyy/MM/dd hh:mm:ss").create();
         String json = gson.toJson(entities); //Recibe arraylist y lo convierte a json y luego escribimos el json en un fichero
-        PrintWriter printer = new PrintWriter("./src/main/resources/" + PATH); // Creamos el objeto que puede escribir en fichero
+        PrintWriter printer = new PrintWriter("JRJ/src/main/resources" + PATH); // Creamos el objeto que puede escribir en fichero
         printer.print(json); //Escribimos el json en el fichero
         printer.close(); //Cerramos el fichero
     }

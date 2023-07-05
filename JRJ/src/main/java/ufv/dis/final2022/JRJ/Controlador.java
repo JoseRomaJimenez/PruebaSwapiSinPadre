@@ -21,7 +21,7 @@ public class Controlador {
             peopleString = API.getEntitySwapi(solicitudDescarga);
             Gson gson = new Gson();
 
-            if (solicitudDescarga.getEntity().equals("people")) {
+            if (solicitudDescarga.getPlanets().equals("people")) {
 
                 People people = gson.fromJson(peopleString, People.class);
                 DataHandler.altaEntity(people);

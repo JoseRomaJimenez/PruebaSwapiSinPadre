@@ -17,8 +17,6 @@ public class Planets {
     private String[] films;
 
 
-
-
     public Planets(String name, String rotation_period, String orbital_period, String diameter, String climate, String gravity, String terrain, String surface_water, String population, String[] residents, String[] films) {
         this.name = name;
         this.rotation_period = rotation_period;
@@ -133,7 +131,8 @@ public class Planets {
     public int hashCode() {
         return Objects.hash(name);
     }
-@Override
+
+    @Override
     public String toString() {
         return "Planets{" +
                 "name='" + name + '\'' +
@@ -149,3 +148,4 @@ public class Planets {
                 ", films=" + films +
                 '}';
     }
+}
